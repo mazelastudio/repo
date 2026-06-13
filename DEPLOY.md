@@ -8,7 +8,7 @@ Build settings (already correct for this project):
 | --- | --- |
 | Build command | `npm run build` |
 | Output directory | `dist` |
-| Node version | `20` (pinned in `.node-version`) |
+| Node version | `22` (pinned in `.node-version`; Cloudflare's deploy step / wrangler needs Node 22+) |
 
 There are two ways to deploy. **Option A (Git)** is recommended — every push
 auto-rebuilds the live site.
