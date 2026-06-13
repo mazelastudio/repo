@@ -63,16 +63,6 @@ export const videoItems = [
     poster: `${base}/DQM_EtDkV2I.jpg`,
   },
   {
-    id: 'DXmx0QDjq6c',
-    title: 'Acı Lütfen — Short Film',
-    tag: 'Film · Acting',
-    account: '@elaheh.sheikhalizadeh',
-    shortcode: 'DXmx0QDjq6c',
-    orientation: 'portrait',
-    src: `${base}/DXmx0QDjq6c.mp4`,
-    poster: `${base}/DXmx0QDjq6c.jpg`,
-  },
-  {
     id: 'DQOsUhkDFS7',
     title: 'Reverie — In Motion',
     tag: 'Painting',
