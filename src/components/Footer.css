@@ -20,18 +20,10 @@
   gap: 1rem;
 }
 
-.footer__mark {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(246, 241, 233, 0.06);
-  border: 1px solid rgba(246, 241, 233, 0.2);
-  color: var(--gold);
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.4rem;
+.footer__logo {
+  width: 92px;
+  height: auto;
+  opacity: 0.95;
 }
 
 .footer__name {

@@ -13,9 +13,11 @@
   --ink-muted: #8a8073;
   --clay: #b06a45;       /* primary accent */
   --gold: #c9874f;       /* secondary accent */
+  --pine: #355051;       /* Mazela Studio brand mark colour */
+  --pine-deep: #16211f;
   --line: rgba(26, 23, 18, 0.12);
-  --night: #16130f;      /* dark sections */
-  --night-soft: #221e18;
+  --night: #16211f;      /* dark sections — deep pine-charcoal from the logo */
+  --night-soft: #1f2d2a;
 
   /* Type */
   --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;

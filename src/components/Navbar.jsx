@@ -25,8 +25,17 @@ export default function Navbar() {
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className="nav__inner container">
-        <a href="#top" className="nav__brand" onClick={() => setOpen(false)}>
-          <span className="nav__brand-mark">M</span>
+        <a href="#top" className="nav__brand" onClick={() => setOpen(false)} aria-label="Mazela Studio — home">
+          <img
+            className="nav__brand-mark nav__brand-mark--light"
+            src="/brand/mazela-mark-light.png"
+            alt=""
+          />
+          <img
+            className="nav__brand-mark nav__brand-mark--dark"
+            src="/brand/mazela-mark.png"
+            alt=""
+          />
           <span className="nav__brand-text">Mazela&nbsp;Studio</span>
         </a>
 

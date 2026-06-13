@@ -8,7 +8,11 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__inner">
         <div className="footer__brand">
-          <span className="footer__mark">M</span>
+          <img
+            className="footer__logo"
+            src="/brand/mazela-logo-light.png"
+            alt="Mazela Studio"
+          />
           <div>
             <p className="footer__name">{profile.name}</p>
             <p className="footer__role">{profile.titles.join(' · ')}</p>
