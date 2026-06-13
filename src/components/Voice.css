@@ -1,0 +1,83 @@
+.voice {
+  background: var(--bone-soft);
+}
+
+.voice__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.voice__intro .lead {
+  margin-bottom: 2.5rem;
+}
+
+/* Animated equaliser bars — a nod to the voice work */
+.voice__wave {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 64px;
+}
+
+.voice__wave span {
+  flex: 1;
+  background: linear-gradient(var(--gold), var(--clay));
+  border-radius: 2px;
+  height: 30%;
+  animation: eq 1.4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.06s);
+  opacity: 0.85;
+}
+
+@keyframes eq {
+  0%, 100% { height: 18%; }
+  50% { height: 90%; }
+}
+
+.voice__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.voice__credit {
+  background: var(--bone);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.8rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.voice__credit:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(26, 23, 18, 0.08);
+}
+
+.voice__tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.voice__credit-title {
+  font-size: 1.35rem;
+  margin: 0.7rem 0 0.6rem;
+}
+
+.voice__credit-detail {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+@media (max-width: 820px) {
+  .voice__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 460px) {
+  .voice__list { grid-template-columns: 1fr; }
+}

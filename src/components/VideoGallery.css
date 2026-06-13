@@ -1,0 +1,247 @@
+.videos__head {
+  max-width: 60ch;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* Horizontal "film strip" — scroll-snaps on every screen size, which feels
+   natural on touch and keeps tall portrait reels from dominating the page. */
+.videos__strip {
+  display: flex;
+  gap: 1.1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+  padding-bottom: 1rem;
+  scroll-padding-left: clamp(1.25rem, 5vw, 3rem);
+}
+
+.videos__strip::-webkit-scrollbar {
+  display: none;
+}
+
+.vcard {
+  flex: 0 0 auto;
+  width: clamp(200px, 60vw, 250px);
+  scroll-snap-align: start;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  color: var(--bone);
+}
+
+.vcard__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 9 / 16;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--night-soft);
+}
+
+.vcard__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vcard__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 13, 10, 0.6), transparent 50%);
+  opacity: 0.7;
+  transition: opacity 0.4s ease;
+}
+
+.vcard:hover .vcard__media img {
+  transform: scale(1.05);
+}
+
+.vcard__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(246, 241, 233, 0.16);
+  border: 1px solid rgba(246, 241, 233, 0.5);
+  backdrop-filter: blur(4px);
+  color: var(--bone);
+  z-index: 1;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.vcard:hover .vcard__play {
+  background: var(--clay);
+  border-color: var(--clay);
+  transform: scale(1.08);
+}
+
+.vcard__play svg {
+  margin-left: 3px;
+}
+
+.vcard__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-top: 0.85rem;
+}
+
+.vcard__tag {
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.vcard__title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+/* ── Modal player ─────────────────────────────────────────────────────────── */
+.vmodal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(12, 10, 8, 0.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  animation: vfade 0.3s ease;
+}
+
+@keyframes vfade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.vmodal__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: vrise 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes vrise {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.vmodal__figure video {
+  border-radius: 6px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  background: #000;
+  max-height: 78vh;
+}
+
+.vmodal__figure--portrait video {
+  width: auto;
+  max-width: min(440px, 92vw);
+  height: 78vh;
+  max-height: 78vh;
+}
+
+.vmodal__figure--landscape video {
+  width: min(900px, 92vw);
+  height: auto;
+}
+
+.vmodal__caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 1.1rem;
+  text-align: center;
+}
+
+.vmodal__title {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  color: var(--bone);
+}
+
+.vmodal__detail {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(246, 241, 233, 0.55);
+}
+
+.vmodal__link {
+  margin-top: 0.4rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease;
+}
+
+.vmodal__link:hover {
+  border-color: var(--gold);
+}
+
+.vmodal__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.8rem;
+  font-size: 2.2rem;
+  line-height: 1;
+  background: none;
+  border: none;
+  color: rgba(246, 241, 233, 0.8);
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.vmodal__close:hover {
+  color: var(--bone);
+  transform: rotate(90deg);
+}
+
+.vmodal__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(246, 241, 233, 0.3);
+  background: rgba(246, 241, 233, 0.05);
+  color: var(--bone);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.vmodal__nav:hover {
+  background: rgba(246, 241, 233, 0.16);
+  border-color: var(--gold);
+}
+
+.vmodal__nav--prev { left: clamp(0.5rem, 3vw, 2.5rem); }
+.vmodal__nav--next { right: clamp(0.5rem, 3vw, 2.5rem); }
+
+/* On phones the arrows would overlap a portrait video — hide them and rely on
+   swipe (left/right to change reel, down to close). */
+@media (max-width: 640px) {
+  .vmodal__nav { display: none; }
+  .vmodal__figure--portrait video { height: 70vh; max-width: 94vw; }
+  .vcard { width: 70vw; }
+}

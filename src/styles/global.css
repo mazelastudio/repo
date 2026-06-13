@@ -1,0 +1,208 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM — "Atelier"
+   A refined fine-art portfolio aesthetic: warm bone canvas, deep ink text,
+   a clay/gold accent, generous whitespace and editorial serif display type.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Palette */
+  --bone: #f6f1e9;
+  --bone-soft: #efe8db;
+  --ink: #1a1712;
+  --ink-soft: #4a443b;
+  --ink-muted: #8a8073;
+  --clay: #b06a45;       /* primary accent */
+  --gold: #c9874f;       /* secondary accent */
+  --line: rgba(26, 23, 18, 0.12);
+  --night: #16130f;      /* dark sections */
+  --night-soft: #221e18;
+
+  /* Type */
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Rhythm */
+  --section-pad: clamp(4rem, 9vw, 8rem);
+  --maxw: 1180px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 17px;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--clay);
+  color: var(--bone);
+}
+
+/* ── Layout helpers ───────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+.section {
+  padding-block: var(--section-pad);
+}
+
+.section--dark {
+  background: var(--night);
+  color: var(--bone);
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--clay);
+  display: inline-block;
+  margin-bottom: 1.1rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  margin-bottom: 1.5rem;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.section--dark .lead {
+  color: rgba(246, 241, 233, 0.78);
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.8rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--ink);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--bone);
+  transform: translateY(-2px);
+}
+
+.btn--solid {
+  background: var(--clay);
+  border-color: var(--clay);
+  color: var(--bone);
+}
+
+.btn--solid:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.btn--ghost-light {
+  border-color: rgba(246, 241, 233, 0.4);
+  color: var(--bone);
+}
+
+.btn--ghost-light:hover {
+  background: var(--bone);
+  color: var(--ink);
+}
+
+/* ── Reveal-on-scroll animation ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── Mobile-first refinements ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  :root {
+    --section-pad: clamp(3rem, 12vw, 4.5rem);
+  }
+
+  body {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .section-title {
+    font-size: clamp(1.85rem, 8vw, 2.4rem);
+  }
+
+  /* Comfortable tap targets everywhere */
+  .btn {
+    padding: 0.9rem 1.5rem;
+  }
+
+  /* Full-width primary actions read better on a phone */
+  .hero__actions { width: 100%; }
+  .hero__actions .btn { flex: 1 1 auto; justify-content: center; }
+}
+
+/* Guard against any accidental horizontal scroll on small screens */
+html, body { max-width: 100%; }
+
