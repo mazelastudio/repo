@@ -39,18 +39,29 @@ mazelastudio@gmail.com). Re-run the same command to publish updates.
 
 ---
 
-## Custom domain
+## Custom domain — mazelastudio.com (registered at GoDaddy)
 
-1. In your Pages project → **Custom domains** → **Set up a domain** → type the
-   domain (e.g. `mazelastudio.com` and/or `www.mazelastudio.com`).
-2. Then it depends where the domain is registered:
-   - **Already on Cloudflare** → one click, done (SSL auto-issued).
-   - **Elsewhere (GoDaddy, Namecheap, etc.)** → Cloudflare shows the exact DNS
-     record to add. Either:
-     - add that `CNAME`/`A` record at your registrar, **or**
-     - move the domain's nameservers to Cloudflare (free) for the simplest,
-       fastest setup — Cloudflare walks you through it.
-3. SSL is automatic and free. Propagation is usually minutes.
+Chosen approach: **move nameservers to Cloudflare** (cleanest; gives free CDN +
+unlimited bandwidth and one-click custom domains). The domain currently uses
+GoDaddy nameservers (`ns15/ns16.domaincontrol.com`) and only has a parking page,
+so there's nothing to preserve.
+
+1. **Deploy first** (see Option A/B above) so the Pages project exists.
+2. **Add the zone to Cloudflare:** dash.cloudflare.com → **Add a domain** →
+   `mazelastudio.com` → **Free** plan. Cloudflare scans DNS and shows **two
+   nameservers** (e.g. `aria.ns.cloudflare.com`, `rob.ns.cloudflare.com`).
+3. **Switch nameservers at GoDaddy:** GoDaddy → *My Products* →
+   `mazelastudio.com` → **DNS** → **Nameservers** → **Change** → *"I'll use my
+   own nameservers"* → paste Cloudflare's two NS → **Save**. Remove GoDaddy's
+   default NS. Propagation: ~15 min–2 h (fast for a new domain).
+   - Cloudflare emails you when the domain is "active".
+4. **Attach to the site:** Pages project → **Custom domains** → add both
+   `mazelastudio.com` and `www.mazelastudio.com`. Each is one click; Cloudflare
+   creates the DNS records and issues SSL automatically.
+5. Optional redirect: in **Custom domains**, set `www` to redirect to the apex
+   (or vice-versa) so there's one canonical address.
+
+SSL is automatic and free.
 
 ---
 
