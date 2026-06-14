@@ -29,6 +29,10 @@ export const profile = {
       handle: '@mazelastudio',
       url: 'https://www.instagram.com/mazelastudio/',
     },
+    youtube: {
+      handle: '@mazelastudio',
+      url: 'https://www.youtube.com/@mazelastudio',
+    },
   },
 
   disciplines: [

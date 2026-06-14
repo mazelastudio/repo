@@ -41,8 +41,17 @@ export default function Contact() {
             rel="noreferrer"
             className="contact__social"
           >
-            <span className="contact__social-label">Studio</span>
+            <span className="contact__social-label">Instagram · Studio</span>
             {contact.instagramStudio.handle}
+          </a>
+          <a
+            href={contact.youtube.url}
+            target="_blank"
+            rel="noreferrer"
+            className="contact__social"
+          >
+            <span className="contact__social-label">YouTube</span>
+            {contact.youtube.handle}
           </a>
           <a
             href={contact.instagramPersonal.url}
@@ -50,7 +59,7 @@ export default function Contact() {
             rel="noreferrer"
             className="contact__social"
           >
-            <span className="contact__social-label">Personal</span>
+            <span className="contact__social-label">Instagram · Personal</span>
             {contact.instagramPersonal.handle}
           </a>
         </div>
