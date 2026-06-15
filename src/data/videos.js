@@ -13,6 +13,15 @@ const base = '/gallery/video'
 
 export const videoItems = [
   {
+    id: 'yt-9OPXZ5zzIsI',
+    title: 'Hezartoo — “Labyrinth”',
+    tag: 'Lyric Video · Vocal',
+    account: '@elaheh.sheikhalizadeh',
+    youtubeId: '9OPXZ5zzIsI',
+    orientation: 'landscape',
+    poster: 'https://i.ytimg.com/vi/9OPXZ5zzIsI/maxresdefault.jpg',
+  },
+  {
     id: 'DQETBVDjNeB',
     title: 'The Spiral of Hope',
     tag: 'Process · Mural',

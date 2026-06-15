@@ -124,17 +124,28 @@ export default function VideoGallery() {
             className={`vmodal__figure vmodal__figure--${active.orientation}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <video
-              ref={videoRef}
-              key={active.id}
-              src={active.src}
-              poster={active.poster}
-              controls
-              autoPlay
-              playsInline
-              loop
-              preload="auto"
-            />
+            {active.youtubeId ? (
+              <iframe
+                key={active.id}
+                className="vmodal__yt"
+                src={`https://www.youtube-nocookie.com/embed/${active.youtubeId}?autoplay=1&rel=0`}
+                title={active.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            ) : (
+              <video
+                ref={videoRef}
+                key={active.id}
+                src={active.src}
+                poster={active.poster}
+                controls
+                autoPlay
+                playsInline
+                loop
+                preload="auto"
+              />
+            )}
             <figcaption className="vmodal__caption">
               <span className="vmodal__title">{active.title}</span>
               <span className="vmodal__detail">
@@ -142,12 +153,16 @@ export default function VideoGallery() {
               </span>
               <a
                 className="vmodal__link"
-                href={ig(active.shortcode)}
+                href={
+                  active.youtubeId
+                    ? `https://youtu.be/${active.youtubeId}`
+                    : ig(active.shortcode)
+                }
                 target="_blank"
                 rel="noreferrer"
                 onClick={(e) => e.stopPropagation()}
               >
-                View on Instagram ↗
+                {active.youtubeId ? 'Watch on YouTube ↗' : 'View on Instagram ↗'}
               </a>
             </figcaption>
           </figure>
